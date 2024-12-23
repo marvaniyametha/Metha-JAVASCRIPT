@@ -38,7 +38,7 @@ let data = {
 
 // 1.Add Some New Property And His Value. 2.Replace Value 3.Delete Property.
 /*
-    1.data.address = "VIP Road Vesu, Surat, Gujarat"
+    1.data.address = "motavarracha, Surat, Gujarat"
     2.data.age = 20
     3.delete data.age
 */
