@@ -1,0 +1,132 @@
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Countdown Timer</title>
+       <style>
+           * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+           }
+   
+           body {
+               font-family: 'Arial', sans-serif;
+               display: flex;
+               flex-direction: column; 
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               margin: 0;
+               background: linear-gradient(135deg, #ff5f6d, #ffc3a0); 
+               color: white;
+           }
+   
+           h1 {
+               text-align: center;
+               margin-bottom: 40px;
+               padding: 20px;
+               border-radius: 15px;
+               background-color: rgba(99, 76, 175, 0.8);
+               color: white;
+               font-size: 2.5rem;
+               box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+               letter-spacing: 1px;
+               transition: all 0.3s ease;
+           }
+   
+           h1:hover {
+               transform: scale(1.05);
+               box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+           }
+   
+           .countdown {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               gap: 25px;
+           }
+   
+           .circle {
+               width: 120px;
+               height: 120px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               font-size: 2rem;
+               font-weight: bold;
+               border-radius: 50%;
+               box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+               transition: all 0.3s ease;
+           }
+   
+           #hours {
+               background: linear-gradient(135deg, #634caf, #6a8fad); 
+           }
+   
+           #minutes {
+               background: linear-gradient(135deg, #ff6a00, #ffb347); 
+           }
+   
+           #seconds {
+               background: linear-gradient(135deg, #00bcd4, #0288d1);
+           }
+   
+           /* Hover Effect */
+           .circle:hover {
+               transform: scale(1.1); 
+               box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+           }
+   
+           .circle:active {
+               transform: scale(0.95);
+           }
+   
+           .label {
+               font-size: 1.1rem;
+               margin-top: 5px;
+               color: #fff;
+           }
+   
+       </style>
+   </head>
+   <body>
+   
+       <h1>Countdown Timer</h1>
+       <div class="countdown">
+           <div id="hours" class="circle"></div>
+           <div id="minutes" class="circle"></div>
+           <div id="seconds" class="circle"></div>
+       </div>
+   
+       <script>
+           let targetDate = Date.parse("January 31, 2025 00:00:00");
+   
+           let x = setInterval(function() {
+               let now = new Date().getTime();
+               let distance = targetDate - now;
+   
+         
+               let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+               let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+               let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   
+               
+               document.getElementById("hours").innerHTML = (distance >= 0) ? hours : 0;
+               document.getElementById("minutes").innerHTML = (distance >= 0) ? minutes : 0;
+               document.getElementById("seconds").innerHTML = (distance >= 0) ? seconds : 0;
+   
+               if (distance < 0) {
+                   clearInterval(x);
+                   document.getElementById("hours").innerHTML = "EXPIRED";
+                   document.getElementById("minutes").innerHTML = "";
+                   document.getElementById("seconds").innerHTML = "";
+               }
+           }, 1000);
+       </script>
+   
+   </body>
+   </html>
+   
