@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table Styling */
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            border-radius: 6px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="order">Order Status</h1>
+    <button onclick="order()" class="button">Place Order</button>
+
+    <div id="res" class="table-container"></div>
+
+    <script>
+        function order() {
+            const message = "Your order has been placed successfully! 🎉";
+            alert(message);
+            document.getElementById('order').innerHTML = message;
+        }
+
+        function view_data() {
+            const viewdata = localStorage.getItem("student");
+            const view = JSON.parse(viewdata) || [];
+
+            let data = `<table>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Quantity</th>
+                                <th>Image</th>
+                            </tr>`;
+
+            for (let i = 0; i < view.length; i++) {
+                data += `<tr>
+                            <td>${view[i]['pname']}</td>
+                            <td>${view[i]['pprice']}</td>
+                            <td>${view[i]['quntity']}</td>
+                            <td><img src="images/${view[i]['img']}" width='80px'/></td>
+                        </tr>`;
+            }
+
+            data += `</table>`;
+            document.getElementById('res').innerHTML = data;
+        }
+
+        view_data();
+    </script>
+
+</body>
+
+</html>

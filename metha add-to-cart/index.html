@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <style>
+        /* Global Styling */
+        body {
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #007BFF;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-add {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn-add:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-view {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn-view:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Product</h2>
+        <input type="hidden" id="editNo" />
+
+        <table>
+            <tr>
+                <td>Product Name:</td>
+                <td><input type="text" id="productName" required /></td>
+            </tr>
+            <tr>
+                <td>Product Price:</td>
+                <td><input type="text" id="productPrice" required /></td>
+            </tr>
+            <tr>
+                <td>Product Quantity:</td>
+                <td><input type="number" id="productQuantity" required /></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="file" id="productImage" accept="image/*" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-add" onclick="addProduct()">Add Product</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <a href="view-data.html" class="btn-view">View Products</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Retrieve stored data or initialize an empty array
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+
+        function addProduct() {
+            const productName = document.getElementById('productName').value.trim();
+            const productPrice = document.getElementById('productPrice').value.trim();
+            const productQuantity = document.getElementById('productQuantity').value.trim();
+            const productImageFile = document.getElementById('productImage').files[0];
+            const editNo = document.getElementById('editNo').value;
+
+            if (!productName || !productPrice || !productQuantity) {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            if (productImageFile) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imageData = e.target.result;
+                    processProduct(productName, productPrice, productQuantity, imageData, editNo);
+                };
+                reader.readAsDataURL(productImageFile);
+            } else {
+                processProduct(productName, productPrice, productQuantity, null, editNo);
+            }
+        }
+
+        function processProduct(name, price, quantity, imageData, editNo) {
+            if (editNo) {
+                // Update existing product
+                for (let i = 0; i < products.length; i++) {
+                    if (products[i]['no'] == editNo) {
+                        products[i]['name'] = name;
+                        products[i]['price'] = price;
+                        products[i]['quantity'] = quantity;
+                        if (imageData) {
+                            products[i]['image'] = imageData;
+                        }
+                        document.getElementById('editNo').value = "";
+                        break;
+                    }
+                }
+            } else {
+                // Add new product
+                const product = {
+                    name: name,
+                    price: price,
+                    quantity: quantity,
+                    image: imageData || "",
+                    no: Math.round(Math.random() * 1000),
+                };
+                products.push(product);
+            }
+
+            // Save updated data in localStorage
+            localStorage.setItem("products", JSON.stringify(products));
+
+            // Reset form fields
+            document.getElementById('productName').value = "";
+            document.getElementById('productPrice').value = "";
+            document.getElementById('productQuantity').value = "";
+            document.getElementById('productImage').value = "";
+
+            alert("Product added successfully!");
+        }
+    </script>
+
+</body>
+
+</html>
