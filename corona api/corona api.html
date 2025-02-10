@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Stats by State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .stats {
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>COVID-19 Stats by State</h1>
+        <input type="text" id="search-input" placeholder="Enter State Name">
+        <button id="search-btn">Search</button>
+        
+        <div id="error-message" class="error hidden"></div>
+
+        <div id="covid-stats" class="stats hidden">
+            <div id="state-name" class="stat-item"></div>
+            <div id="total-cases" class="stat-item"></div>
+            <div id="total-recovered" class="stat-item"></div>
+            <div id="total-deaths" class="stat-item"></div>
+        </div>
+    </div>
+
+<script src="corona api.js"></script>
+
+</body>
+</html>
