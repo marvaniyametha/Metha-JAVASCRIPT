@@ -1,0 +1,116 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #6fa3ef, #e3f2fd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+.weather-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.weather-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+#weather-city {
+  flex-grow: 1;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #2196f3;
+  border-radius: 30px;
+  outline: none;
+  background-color: #fafafa;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#weather-city:focus {
+  border-color: #64b5f6;
+  background-color: #f1f8ff;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+.ri-search-line {
+  font-size: 28px;
+  color: #2196f3;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.ri-search-line:hover {
+  color: #1e88e5;
+  transform: scale(1.2);
+}
+
+.weather-card {
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+}
+
+.weather-card h3 {
+  font-size: 32px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.weather-card .temperature {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2196f3;
+  margin: 10px 0;
+}
+
+.weather-card img {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.weather-card img:hover {
+  transform: rotate(15deg);
+}
+
+.weather-card p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
+}
