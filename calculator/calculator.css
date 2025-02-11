@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  display: inline-block;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.display {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.operator {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+.equal {
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+.clear {
+  background-color: #d9534f;
+  color: #fff;
+}
