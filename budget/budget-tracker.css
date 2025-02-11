@@ -1,0 +1,150 @@
+/* General Reset and Font Setup */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f7f9fd;
+}
+
+/* Wrapper for Main Layout */
+.wrapper {
+    width: 90%;
+    max-width: 43.75em;
+    margin: 1em auto;
+    font-size: 16px;
+}
+
+/* Container to Hold Content */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+/* Sub-Container for Budget and Expense Sections */
+.sub-container {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+/* Output Container (Budget and Balance Information) */
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #587ef4;
+    color: white;
+    border-radius: 0.3em;
+    padding: 1.2em;
+}
+
+.output-container p {
+    font-weight: 500;
+}
+
+.output-container span {
+    font-weight: 400;
+    color: #e5e5e5;
+}
+
+/* Budget Section (Total Amount Input and Button) */
+.total-amount-container,
+.user-amount-container {
+    background-color: white;
+    padding: 1.25em;
+    border-radius: 0.3em;
+    box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+    width: 100%;
+}
+
+/* Input Fields and Submit Button */
+input,
+.submit {
+    width: 100%;
+    padding: 0.6em;
+    border: 1px solid #d0d0d0;
+    border-radius: 0.3em;
+    margin-bottom: 0.6em;
+}
+
+input:focus {
+    border-color: #587ef4;
+}
+
+/* Submit Button Style */
+.submit {
+    background-color: #587ef4;
+    color: white;
+    cursor: pointer;
+}
+
+.submit:disabled {
+    background-color: #cccccc;
+}
+
+/* Error Message Styling */
+.error {
+    color: #ff465a;
+    font-size: 0.9em;
+}
+
+.hide {
+    display: none;
+}
+
+/* Expense List Section */
+.list {
+    background-color: white;
+    padding: 1.8em;
+    box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+    border-radius: 0.6em;
+}
+
+/* Individual Expense Item */
+.sublist-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    border-left: 0.3em solid #587ef4;
+    margin-bottom: 1em;
+}
+
+.product,
+.amount {
+    font-weight: 500;
+}
+
+.edit,
+.delete {
+    background: transparent;
+    cursor: pointer;
+    color: #587ef4;
+    border: none;
+    font-size: 1.2em;
+}
+
+/* Edit/Delete Button Layout */
+.edit {
+    margin-left: auto;
+}
+
+.delete {
+    margin-left: 1em;
+}
+
+/* Responsive Design for Small Screens */
+@media screen and (max-width: 600px) {
+    .wrapper {
+        font-size: 14px;
+    }
+
+    .sub-container {
+        flex-direction: column;
+        gap: 1em;
+    }
+}
